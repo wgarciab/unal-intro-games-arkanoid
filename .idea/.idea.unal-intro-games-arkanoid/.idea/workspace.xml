@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dcac6f49-74a7-4be8-9f9e-580042b0e422" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.unal-intro-games-arkanoid/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.unal-intro-games-arkanoid/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scr/Ball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scr/Ball.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scr/Grid/BlockTile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scr/Grid/BlockTile.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +16,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scr/Paddle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scr/Grid/BlockTile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scr/Grid/GridController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="23iElBUrqide5aWeZhkhgfApjgJ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -60,7 +61,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1642208730919</updated>
-      <workItem from="1642208861970" duration="2670000" />
+      <workItem from="1642208861970" duration="3548000" />
     </task>
     <servers />
   </component>

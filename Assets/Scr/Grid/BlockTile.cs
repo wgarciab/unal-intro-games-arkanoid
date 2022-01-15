@@ -30,9 +30,9 @@ public class BlockTile : MonoBehaviour
     private int _totalHits = 1;
     private int _currentHits = 0;
 
-    private void Start()
+    public void SetData(BlockColor color)
     {
-        Init();
+        _color = color;
     }
 
     public void Init()
@@ -44,8 +44,8 @@ public class BlockTile : MonoBehaviour
         _collider.enabled = true;
         
         _renderer = GetComponentInChildren<SpriteRenderer>();
-        
-        _renderer.sprite = GetBlockSprite(_type, _color, 0);
+
+        _renderer.sprite =GetBlockSprite(_type, _color, 0);
     }
     
     public void OnHitCollision(ContactPoint2D contactPoint)
