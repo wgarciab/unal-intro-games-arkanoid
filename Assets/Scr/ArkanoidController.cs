@@ -15,9 +15,22 @@ public class ArkanoidController : MonoBehaviour
     private List<LevelData> _levels = new List<LevelData>();
     
     private int _currentLevel = 0;
-    
+
     private Ball _ballPrefab = null;
     private List<Ball> _balls = new List<Ball>();
+    
+    
+    private void Start()
+    {
+        ArkanoidEvent.OnBallReachDeadZoneEvent += OnBallReachDeadZone;
+        ArkanoidEvent.OnBlockDestroyedEvent += OnBlockDestroyed;
+    }
+
+    private void OnDestroy()
+    {
+        ArkanoidEvent.OnBallReachDeadZoneEvent -= OnBallReachDeadZone;
+        ArkanoidEvent.OnBlockDestroyedEvent -= OnBlockDestroyed;
+    }
     
     private void Update()
     {
@@ -63,5 +76,44 @@ public class ArkanoidController : MonoBehaviour
         }
         
         _balls.Clear();
+    }
+    
+    private void OnBallReachDeadZone(Ball ball)
+    {
+        ball.Hide();
+        _balls.Remove(ball);
+        Destroy(ball.gameObject);
+
+        CheckGameOver();
+    }
+    
+    private void CheckGameOver()
+    {
+        if (_balls.Count == 0)
+        {
+            //Game over
+            ClearBalls();
+            
+            Debug.Log("Game Over: LOSE!!!");
+        }
+    }
+    
+    private void OnBlockDestroyed(int blockId)
+    {
+        if (_gridController.GetBlocksActive() == 0)
+        {
+            _currentLevel++;
+            if (_currentLevel >= _levels.Count)
+            {
+                ClearBalls();
+                Debug.LogError("Game Over: WIN!!!!");
+            }
+            else
+            {
+                SetInitialBall();
+                _gridController.BuildGrid(_levels[_currentLevel]);
+            }
+
+        }
     }
 }
