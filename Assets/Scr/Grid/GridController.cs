@@ -5,14 +5,17 @@ public class GridController : MonoBehaviour
 {
     [SerializeField]
     private Vector2 _offset = new Vector2(-5.45f, 4);
-    [SerializeField]
+    //[SerializeField]
     private LevelData _currentLevelData;
 
-    private void Start()
+    public void BuildGrid(LevelData levelData)
     {
+        _currentLevelData = levelData;
+        ClearGrid();
         BuildGrid();
     }
-
+    
+    
     private void BuildGrid()
     {
         int rowCount = _currentLevelData.RowCount;
@@ -26,7 +29,6 @@ public class GridController : MonoBehaviour
             float horizontalSpacing = rowData.blockSpacing;
             Vector2 blockSize = GetBlockSize(rowData.BlockType);
             BlockTile blockTilePerfab = Resources.Load<BlockTile>(GetBlockPath(rowData.BlockType));
-            BlockColor blockColor = rowData.BlockColor;
 
             if (blockTilePerfab == null)
             {
@@ -40,12 +42,27 @@ public class GridController : MonoBehaviour
                 float y = _offset.y - (blockSize.y + verticalSpacing) * j;
                 blockTile.transform.position = new Vector3(x, y, 0);
                 
-                blockTile.SetData(blockColor);
                 blockTile.Init();
             }
         }
     }
 
+    private void ClearGrid()
+    {
+        int totalChildren = transform.childCount;
+        for (int i = totalChildren - 1; i >= 0; i--)
+        {
+            if (Application.isPlaying)
+            {
+                Destroy(transform.GetChild(i).gameObject);
+            }
+            else
+            {
+                DestroyImmediate(transform.GetChild(i).gameObject);
+            }
+        }
+    }
+    
     private Vector2 GetBlockSize(BlockType type)
     {
         if (type == BlockType.Big)
