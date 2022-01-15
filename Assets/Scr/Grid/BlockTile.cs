@@ -21,6 +21,8 @@ public class BlockTile : MonoBehaviour
     
     [SerializeField] 
     private BlockType _type = BlockType.Big;
+    [SerializeField]
+    private int _score = 10;
     
     private int _id;
     private BlockColor _color = BlockColor.Blue;
@@ -30,6 +32,8 @@ public class BlockTile : MonoBehaviour
     private int _totalHits = 1;
     private int _currentHits = 0;
 
+    public int Score => _score;
+    
     public void SetData(int id, BlockColor color)
     {
         _id = id;

@@ -9,7 +9,17 @@ public class GridController : MonoBehaviour
     private LevelData _currentLevelData;
     
     private Dictionary<int, BlockTile> _blockTiles = new Dictionary<int, BlockTile>();
+    
+    public BlockTile GetBlockBy(int id)
+    {
+        if (_blockTiles.TryGetValue(id, out BlockTile block))
+        {
+            return block;
+        }
 
+        return null;
+    }
+    
     public int GetBlocksActive()
     {
         int totalActiveBlocks = 0;
